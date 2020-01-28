@@ -9,12 +9,13 @@ describe("EditableSection", () => {
   const setup = (propOverrides?: Partial<EditableSectionProps>, children?) => {
     const props = {
       title: "defaultTitle",
+      readOnly: false,
       ...propOverrides,
     };
     const wrapper = shallow<EditableSection>(<EditableSection {...props} >{ children }</EditableSection>)
     return { wrapper, props };
   };
-  
+
   describe("setEditMode", () => {
     const { wrapper, props } = setup();
 
@@ -48,6 +49,7 @@ describe("EditableSection", () => {
     const customTitle = "custom title";
     const { wrapper, props } = setup({ title: customTitle }, <TagInput/>);
 
+    // TODO how do I test for readOnly?
     it("sets the title from a prop", () => {
       expect(wrapper.find(".section-title").text()).toBe(customTitle);
     });

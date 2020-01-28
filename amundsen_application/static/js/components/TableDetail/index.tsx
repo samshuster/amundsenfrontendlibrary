@@ -29,7 +29,7 @@ import TableIssues from 'components/TableDetail/TableIssues';
 import WatermarkLabel from 'components/TableDetail/WatermarkLabel';
 import WriterLink from 'components/TableDetail/WriterLink';
 import TagInput from 'components/Tags/TagInput';
-import { TableMetadata } from 'interfaces/TableMetadata';
+import {TableMetadata} from 'interfaces/TableMetadata';
 
 import { EditableSection } from 'components/TableDetail/EditableSection';
 
@@ -41,6 +41,7 @@ import { formatDateTimeShort } from 'utils/dateUtils';
 import './styles';
 import RequestDescriptionText from './RequestDescriptionText';
 import RequestMetadataForm from './RequestMetadataForm';
+import EditableText from "components/common/EditableText";
 
 export interface StateFromProps {
   isLoading: boolean;
@@ -211,6 +212,27 @@ class TableDetail extends React.Component<TableDetailProps & RouteComponentProps
                   </EditableSection>
                 </section>
               </section>
+              {data.programmatic_descriptions.length > 0 &&
+                <>
+                  <div className="programmatic-title title-4">Read-Only information, Auto-Generated.</div>
+                  <hr className="programmatic-hr hr1"/>
+                </>
+              }
+              {
+                data.programmatic_descriptions
+                  .map(d =>
+                    <section key={d.source} className="column-layout-2">
+                    <EditableSection title={d.title} readOnly={true}>
+                      <EditableText
+                        maxLength={999999}
+                        value={d.text}
+                        editable={false}
+                        onSubmitValue={null} // TODO why is editable not being respected?
+                      />
+                    </EditableSection>
+                    </section>
+                  )
+              }
             </section>
             <section className="right-panel">
               <ColumnList columns={ data.columns }/>
