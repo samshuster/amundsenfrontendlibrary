@@ -17,7 +17,6 @@ export interface EditableSectionChildProps {
 }
 
 export class EditableSection extends React.Component<EditableSectionProps, EditableSectionState> {
-
   constructor(props) {
     super(props);
 

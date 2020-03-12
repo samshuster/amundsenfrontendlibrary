@@ -67,5 +67,14 @@ describe("EditableSection", () => {
       const { wrapper } = setup(null, child);
       expect(wrapper.childAt(1).text()).toBe(child);
     });
+
+    it("renders button when readOnly=false", () => {
+      expect(wrapper.find(".btn").length).toEqual(1);
+    });
+
+    it("does not render button when readOnly=true", () => {
+      const { wrapper } = setup({readOnly: true}, <TagInput/>);
+      expect(wrapper.find(".btn").length).toEqual(0);
+    });
   });
 });
