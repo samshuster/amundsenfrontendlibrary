@@ -16,7 +16,7 @@ import Breadcrumb from 'components/common/Breadcrumb';
 import DataPreviewButton from 'components/TableDetail/DataPreviewButton';
 import ColumnList from 'components/TableDetail/ColumnList';
 import ExploreButton from 'components/TableDetail/ExploreButton';
-import Flag from 'components/common/Flag';
+import Flag, {CaseType, convertText} from 'components/common/Flag';
 import FrequentUsers from 'components/TableDetail/FrequentUsers';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import LineageLink from 'components/TableDetail/LineageLink';
@@ -222,7 +222,7 @@ class TableDetail extends React.Component<TableDetailProps & RouteComponentProps
                 data.programmatic_descriptions
                   .map(d =>
                     <section key={d.source} className="column-layout-2">
-                    <EditableSection title={d.title} readOnly={true}>
+                    <EditableSection title={convertText(d.title, CaseType.SENTENCE_CASE)} readOnly={true}>
                       <EditableText
                         maxLength={999999}
                         value={d.text}

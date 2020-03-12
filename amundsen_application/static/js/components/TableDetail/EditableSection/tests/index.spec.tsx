@@ -49,7 +49,6 @@ describe("EditableSection", () => {
     const customTitle = "custom title";
     const { wrapper, props } = setup({ title: customTitle }, <TagInput/>);
 
-    // TODO how do I test for readOnly?
     it("sets the title from a prop", () => {
       expect(wrapper.find(".section-title").text()).toBe(customTitle);
     });

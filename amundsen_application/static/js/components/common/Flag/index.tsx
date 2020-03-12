@@ -20,7 +20,7 @@ export function convertText(str: string, caseType: string): string {
     case CaseType.LOWER_CASE:
       return str.toLowerCase();
     case CaseType.SENTENCE_CASE:
-      return `${str.charAt(0).toUpperCase()}${str.slice(1).toLowerCase()}`;
+      return str.split(new RegExp('\\s+')).map(x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()).join(" ");
     case CaseType.UPPER_CASE:
       return str.toUpperCase();
     default:

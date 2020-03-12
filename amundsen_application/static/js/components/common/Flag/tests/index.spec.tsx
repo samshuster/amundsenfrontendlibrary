@@ -45,7 +45,7 @@ describe('Flag', () => {
         });
 
         it('returns Sentence case text if caseType=CaseType.SENTENCE_CASE', () => {
-            expect(convertText(text, CaseType.SENTENCE_CASE)).toEqual('Random text');
+            expect(convertText(text, CaseType.SENTENCE_CASE)).toEqual('Random Text');
         });
 
         it('returns text in defauilt case', () => {
